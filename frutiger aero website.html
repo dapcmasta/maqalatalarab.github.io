@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقالات العرب</title>
+    <style>
+        body {
+            background: url('1.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: #0047AB;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .article {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            text-align: right;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #222;
+        }
+        .article-form {
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .post-button {
+            width: 100px;
+            height: 40px;
+            background: url('2.png') no-repeat center center;
+            background-size: contain;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مقالات العرب</h1>
+        <div class="article-form">
+            <h2>إضافة مقال جديد</h2>
+            <input type="text" id="title" placeholder="عنوان المقال">
+            <textarea id="content" rows="5" placeholder="محتوى المقال"></textarea>
+            <button class="post-button" onclick="addArticle()"></button>
+        </div>
+        <div id="articles"></div>
+        <div class="footer">© 1446 مقالات العرب</div>
+    </div>
+    <script>
+        function addArticle() {
+            let title = document.getElementById('title').value;
+            let content = document.getElementById('content').value;
+            if (title && content) {
+                let articleDiv = document.createElement('div');
+                articleDiv.classList.add('article');
+                articleDiv.innerHTML = `<h2>${title}</h2><p>${content}</p>`;
+                document.getElementById('articles').prepend(articleDiv);
+                document.getElementById('title').value = '';
+                document.getElementById('content').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
